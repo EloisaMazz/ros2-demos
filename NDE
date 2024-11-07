@@ -1,0 +1,12 @@
+-Provare a scrivere in traj_lib e traj_srv un codice che prenda una serie di waypoints, li trasformi in una traiettoria e faccia upload/start trajectory, la differenza è che nel primo si usa la loro libreria per fare start trajectory, nel secondo vengono usati i service.
+NDE il cmd_vel non funziona in simulazione quindi il drone non può essere controllato pubblicando su quel topic (goTo servirà solo in test reali ma va aggiunta la parte di land)
+
+
+1 aggiungere take off 
+2 iterare su tutti i polynomials
+
+generare trajectories:
+python3 generate_trajectory.py waypoints_trial.csv traj_trial1.csv --pieces
+
+lavorare su goToClassRequest per ambiente reale (i topic in simulazione non funzionano ma nemmeno nella realtà :) )
+Un'idea potrebbe essere di scrivere uno script per pubblicare velocità su un custom topic (è possibile(?)) e prendere queste velocità con un altro script che integra e comanda in posizione il cf.
